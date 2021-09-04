@@ -1,0 +1,16 @@
+---
+en:
+  activerecord:
+    attributes:
+      food:
+        comment: コメント
+        name: 料理名
+      user:
+        email: メールアドレス
+    models:
+      food:
+        attributes:
+          comment: コメント
+          name: 料理名
+      user:
+        email: メールアドレス

@@ -36,7 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w(jpg gif png)
+    %w[jpg gif png]
   end
 
   # Override the filename of the uploaded files:
@@ -48,6 +48,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   def size_range
     0..5.megabytes
   end
-    
+
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
+  protected
+
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
 end

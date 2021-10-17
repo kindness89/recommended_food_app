@@ -1,6 +1,7 @@
 <%= form_with model: @food, local: true do |f| %>
   <p><%= f.label "料理名" %></p>
   <p><%= f.text_field :name, required: true %></p>
+  <p><%= f.file_field :image %></p>
   <p><%= f.label "コメント" %></p>
   <p><%= f.text_area :comment %></p>
   <p><%= f.submit "送信" %></p>
